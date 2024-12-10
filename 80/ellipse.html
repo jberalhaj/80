@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page title</title>
+    <style>
+        /* بداية تنسيقات header */
+header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: -1;
+    height: 55px;
+    
+   
+}
+h1{
+   font-family: myFont;
+   font-size: 27px;
+}
+
+@font-face {
+         font-family: myFont;
+         src: url('font1.ttf');
+      }
+h2{
+    font-family: myFont;
+   font-size: 25px;
+   margin-right: 10px;
+   
+}
+
+/* بداية تنسيقات ellipse */
+.menu-bar{
+
+            
+}
+ 
+ .menu-icon {
+            font-size: 24px;
+            cursor: pointer;
+            
+            padding: 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+            font-weight: bold;
+            
+           
+        }
+        .menu {
+            display: none;
+            position: absolute;
+            background-color: white;
+         
+            border-radius: 0px 16px 16px 0px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+            opacity: 0;
+            transform: scale(0.9);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            text-align: right;
+            width: 50%;
+            
+            
+        }
+        .menu.show {
+            display: block;
+            opacity: 1;
+            transform: scale(1);
+            animation: ok 0.3s ease;
+            top: 45px;
+            z-index: 99;
+            
+            
+        }
+        @keyframes ok {
+            0%{
+                transform: scale(0.1);
+            }
+            100%{
+                transform: translateX(0);
+            }
+        }
+        .menu-item {
+            color: black;
+            padding: 10px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 15px;
+            
+           
+        }
+        .menu-item:hover {
+            background-color: #EEEEEE;
+            
+        }
+        .menu-icon.active {
+           font-size: 37px;
+           
+        }
+        #g{
+            border-radius: 0px 4px 0px 0px;
+        }
+        #v{
+            border-radius: 0px 0px 4px 0px;
+        }
+        
+        /* icon */
+       #awesome {
+      position: relative;
+      top: 3px;
+      
+    }
+        .menu ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .menu ul li {
+            padding: 8px;
+            cursor: pointer;
+        }
+
+        .menu ul li:hover {
+            
+            
+        }
+    </style>
+</head>
+<body>
+    <header>
+        
+         <div id="menu-bar">
+        <span class="menu-icon" id="toggle-icon"
+         onclick="toggleMenu()">☰</span>
+         
+        <div class="menu" id="menu">
+            <ul>
+                    <li>الخيار الأول</li>
+                    <li>الخيار الثاني</li>
+                    <li>الخيار الثالث</li>
+                </ul>
+       
+        </div>
+    </div>
+        
+        <h1>الشبكة المحلية</h1>
+       </header>
+       
+       
+       <script>
+           function toggleMenu() {
+            const menu = document.getElementById('menu');
+            const icon = document.getElementById('toggle-icon');
+
+            menu.classList.toggle('show');
+            icon.classList.toggle('active');
+
+            if (menu.classList.contains('show')) {
+                icon.textContent = '×';
+            } else {
+                icon.textContent = '☰';
+            }
+        }
+
+        document.addEventListener('click', function(event) {
+            const menu = document.getElementById('menu');
+            const menuContainer = document.getElementById('menu-bar');
+            const icon = document.getElementById('toggle-icon');
+
+            if (!menuContainer.contains(event.target)) {
+                menu.classList.remove('show');
+                icon.textContent = '☰';
+                icon.classList.remove('active');
+            }
+        });
+       </script>
+</body>
+</html>
